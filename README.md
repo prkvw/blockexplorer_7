@@ -12,12 +12,7 @@ transactions in a block
 accounts
 and many more
 
-You can look at PolygonScan as a good example of a good block explorer. Why? We'll be deploying our contracts to the Polygon testnet and is faster than the Ethereum mainnet or testnet. But smartcontracts works in exactly the same way! 
 
-Learn more about Polygon (https://cointelegraph.com/learn/polygon-blockchain-explained-a-beginners-guide-to-matic)
-
-### Tips:
-* Clone the starter project to get started.
 
 ## Getting Started
 
