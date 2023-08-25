@@ -34,3 +34,14 @@ function App() {
 }
 
 export default App;
+
+
+// //header ScopeSevenScan Tab  Home - Tokens - FAQ - 
+//search bar - placeholder = address/transaction hash/block
+//page/address
+
+//overview - getAddress
+// getBalance
+
+//table
+//getHash || Method || Block || Age || getAddress || getDestination || Value || gas Fee
