@@ -14,6 +14,8 @@ function App() {
   const [blockNumber, setBlockNumber] = useState();
   const [inputBlockNumber, setInputBlockNumber] = useState();
   const [transactions, setTransactions] = useState([]);
+  const [transactionDetails, setTransactionDetails] = useState();
+  const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
     async function getBlockNumber() {
@@ -31,21 +33,39 @@ function App() {
       const response = await alchemy.core.getBlockWithTransactions(
         _blockNumber
       );
-      console.log("transactions in block", response.transactions[0]);
+      // console.log("transactions in block", response.transactions[0]);
       setTransactions(() => response.transactions);
     }
   };
 
-  const getDetails=async(_txnhash)=>{
-    console.log('getting deatails for :',_txnhash)
-    const response= await alchemy.core.getTransactionReceipt(_txnhash)
-    console.log('transaction details:',response);
-
-  }
+  const getDetails = async (_txnhash) => {
+    console.log("getting deatails for :", _txnhash);
+    const response = await alchemy.core.getTransactionReceipt(_txnhash);
+    if (response != null) {
+      setTransactionDetails(response);
+      setShowDetails(true);
+      console.log("transaction details:", response.to);
+      setTimeout(() => { 
+        setShowDetails(false);
+        setTransactionDetails();
+      }, 9000);
+    } else {
+      alert("error occured getting deatails");
+    }
+  };
+  const _getNFTMetadat = async () => {};
+  const _getNFTFloorPrice = async () => {};
 
   if (!blockNumber) {
     return (
-      <div style={{display:'flex',justifyContent:'center',alignItems:'center',placeItems:'center'}}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          placeItems: "center",
+        }}
+      >
         <p>Loading.....</p>
       </div>
     );
@@ -54,7 +74,9 @@ function App() {
     <div className="App">
       <h1>Welcome To Web</h1>
       <p>Block Number: {blockNumber}</p>
-      <p>Enter a <strong>block number</strong> to get transactions:</p>
+      <p>
+        Enter a <strong>block number</strong> to get transactions:
+      </p>
       <div className="search-container">
         <input
           type="text"
@@ -62,7 +84,10 @@ function App() {
           placeholder="Enter block number"
           onChange={(e) => setInputBlockNumber(e.target.value)}
         />
-        <button className="search-button" onClick={() => _getBlockWithTransaction(inputBlockNumber)}>
+        <button
+          className="search-button"
+          onClick={() => _getBlockWithTransaction(inputBlockNumber)}
+        >
           Transactions
         </button>
       </div>
@@ -77,7 +102,7 @@ function App() {
         </div>
         {transactions.length > 0 ? (
           transactions.map((transaction, index) => (
-            <div
+            <div key={index}
               className={
                 index % 2 == 0
                   ? "transaction-list even-background"
@@ -93,7 +118,12 @@ function App() {
                 {transaction.blockNumber}
               </div>
               <div>
-                <button className="list-button" onClick={()=>getDetails(transaction.hash)}>Details</button>
+                <button
+                  className="list-button"
+                  onClick={() => getDetails(transaction.hash)}
+                >
+                  Details
+                </button>
               </div>
             </div>
           ))
@@ -101,6 +131,43 @@ function App() {
           <p>No transactions for this block</p>
         )}
       </div>
+      {showDetails==true && (
+        <div
+          style={{
+            margin:'5px',
+            padding:'5px',
+            position: "absolute",
+            border: "black 1px solid",
+            zIndex: "9999999",
+            top: "0px",
+            display:'flex',
+            flexDirection:'column',
+          justifyContent:'left',
+          backgroundColor:'white',
+          borderRadius:'10px',
+          textAlign:'left',
+          boxShadow:'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
+          }}
+        >
+          <strong>Details</strong>
+          <p className="details-list"><strong>To: </strong>{transactionDetails.to}</p>
+          <p className="details-list"><strong>From: </strong>{transactionDetails.from}</p>
+          <p className="details-list"><strong>Contract Adress: </strong>{transactionDetails.contractAddress}</p>
+          <p className="details-list"><strong>Transaction Index: </strong>{transactionDetails.transactionIndex}</p>
+          <p className="details-list"><strong>gasUsed: </strong>{transactionDetails.gasUsed.toString()}</p>
+          {/* <p><strong>Logs Bloom</strong>{transactionDetails.logsBloom}</p> */}
+          <p className="details-list"><strong>Block hash: </strong>{transactionDetails.blockHash}</p>
+          <p className="details-list"><strong>transactionHash: </strong>{transactionDetails.transactionHash}</p>
+          <p className="details-list"><strong>logs: </strong>{transactionDetails.logs.length}</p>
+          <p className="details-list"><strong>Block Number: </strong>{transactionDetails.blockNumber}</p>
+          <p className="details-list"><strong>confirmations: </strong>{transactionDetails.confirmations}</p>
+          <p className="details-list"><strong>cumulativeGasUsed: </strong>{transactionDetails.cumulativeGasUsed.toString()}</p>
+          <p className="details-list"><strong>Effective Gas Price: </strong>{transactionDetails.effectiveGasPrice.toString()}</p>
+          <p className="details-list"><strong>Status: </strong>{transactionDetails.status}</p>
+          <p className="details-list"><strong>type: </strong>{transactionDetails.type}</p>
+          <p className="details-list"><strong>byzantium: </strong>{transactionDetails.byzantium}</p>
+        </div>
+      )}
     </div>
   );
 }

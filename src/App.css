@@ -46,7 +46,6 @@ input{
 .table-container{
   border-radius: 10px;
   border: #61dafb solid 2px;
-  margin: 20px;
   overflow: hidden;
   max-width: 800px;
   display: block;
@@ -56,7 +55,7 @@ input{
 .transaction-heading{
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(4,150px) 100px;
+  grid-template-columns: repeat(4,minmax(100px, 1fr)) 100px;
   background-color: rgb(161, 219, 252);
   font-weight: bold;
   text-align: left;
@@ -66,11 +65,13 @@ input{
 .transaction-list{
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(4,150px) 100px;
+  grid-template-columns: repeat(4,minmax(100px, 1fr)) 100px;
   text-align: left;
   padding-left: 5px;
   align-items: center;
-
+}
+.details-list{
+  margin: 2px;
 }
 .transaction-list-text{
   font-size: 10px;
