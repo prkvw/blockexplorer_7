@@ -84,7 +84,7 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Welcome To Web</h1>
+      <h1>Welcome To Web3 Explorer</h1>
       <p>Block Number: {blockNumber}</p>
       <p>
         Enter a <strong>block number</strong> to get transactions:
