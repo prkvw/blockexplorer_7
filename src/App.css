@@ -2,9 +2,82 @@
   text-align: center;
 }
 
+
+.list-button{
+  font-weight: bold;
+  color:#61dafb;
+  background-color: transparent;
+  cursor:pointer;
+  border-radius: 5px;
+  border: #61dafb 1px solid;
+  padding: 2px 10px;
+}
+.list-button:hover{
+  color:white;
+  background-color: #61dafb;
+}
+
+.search-button{
+  font-weight: bold;
+  color: white;
+  background-color: #61dafb;
+  cursor:pointer;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
+
+input{
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #c7f1fd;
+}
+.search-container{
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.table-container{
+  border-radius: 10px;
+  border: #61dafb solid 2px;
+  margin: 20px;
+  overflow: hidden;
+  max-width: 800px;
+  display: block;
+  margin: auto;
+
+}
+.transaction-heading{
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4,150px) 100px;
+  background-color: rgb(161, 219, 252);
+  font-weight: bold;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.transaction-list{
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4,150px) 100px;
+  text-align: left;
+  padding-left: 5px;
+  align-items: center;
+
+}
+.transaction-list-text{
+  font-size: 10px;
+  word-wrap: break-word;
+}
+.even-background{
+  background-color: aliceblue;
 }
 
 @media (prefers-reduced-motion: no-preference) {
