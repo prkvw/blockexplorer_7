@@ -25,6 +25,11 @@ function App() {
   return <div className="App">Block Number: {blockNumber}</div>;
 }
 
+const getBlockWithTransaction=async(blockNumber)=>{
+
+  const response = alchemy.core.getBlockWithTransactions(SOME_BLOCK_NUMBER)
+}
+
 const main = async () => {
   //Assign the hash from the block number property above , then assign to a variable
   //let txHash = "0x92fc42b9642023f2ee2e88094df80ce87e15d91afa812fef383e6e5cd96e2ed3";
