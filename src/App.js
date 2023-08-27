@@ -21,20 +21,27 @@ function App() {
     async function getBlockNumber() {
       setBlockNumber(await alchemy.core.getBlockNumber());
     }
-
+    console.log('block number:',blockNumber);
     getBlockNumber();
     blockNumber && _getBlockWithTransaction(blockNumber);
   });
 
   const _getBlockWithTransaction = async (_blockNumber) => {
-    if (_blockNumber > blockNumber) {
+    console.log('getting block with transaction');
+    if (_blockNumber > blockNumber || _blockNumber == undefined ) {
       alert("You can't get transactions for this");
     } else {
+      try {
+        console.log('_blocknumber:',_blockNumber);
       const response = await alchemy.core.getBlockWithTransactions(
         _blockNumber
       );
-      // console.log("transactions in block", response.transactions[0]);
+      console.log("transactions in block", response);
       setTransactions(() => response.transactions);
+      } catch (error) {
+        alert(error);
+      }
+      
     }
   };
 
@@ -55,6 +62,11 @@ function App() {
   };
   const _getNFTMetadat = async () => {};
   const _getNFTFloorPrice = async () => {};
+
+  const handleChange=(e)=>{
+    console.log(e.target.value);
+    setInputBlockNumber(e.target.value)
+  }
 
   if (!blockNumber) {
     return (
@@ -82,7 +94,7 @@ function App() {
           type="text"
           value={inputBlockNumber}
           placeholder="Enter block number"
-          onChange={(e) => setInputBlockNumber(e.target.value)}
+          onChange={handleChange}
         />
         <button
           className="search-button"
