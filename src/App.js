@@ -21,7 +21,7 @@ function App() {
     async function getBlockNumber() {
       setBlockNumber(await alchemy.core.getBlockNumber());
     }
-    console.log('block number:',blockNumber);
+    console.log('Latest block number:',blockNumber);
     getBlockNumber();
     blockNumber && _getBlockWithTransaction(blockNumber);
   });
@@ -60,8 +60,8 @@ function App() {
       alert("error occured getting deatails");
     }
   };
-  const _getNFTMetadat = async () => {};
-  const _getNFTFloorPrice = async () => {};
+  //const _getNFTMetadat = async () => {};
+  //const _getNFTFloorPrice = async () => {};
 
   const handleChange=(e)=>{
     console.log(e.target.value);
@@ -143,7 +143,7 @@ function App() {
           <p>No transactions for this block</p>
         )}
       </div>
-      {showDetails==true && (
+      {showDetails===true && (
         <div
           style={{
             margin:'5px',
@@ -203,8 +203,6 @@ export default App;
 //search bar - placeholder = address/transaction hash/block
 //autoGenerateBlockNumber
 
-//getHash - getBlock
-//page/address
 
 //table
 //getHash || Method || Block || Age || getAddress || getDestination || Value || gas Fee
