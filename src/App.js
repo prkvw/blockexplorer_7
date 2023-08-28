@@ -57,7 +57,7 @@ function App() {
         setTransactionDetails();
       }, 9000);
     } else {
-      alert("error occured getting deatails");
+      alert("error occured getting details");
     }
   };
   //const _getNFTMetadat = async () => {};
