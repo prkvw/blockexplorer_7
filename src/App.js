@@ -28,7 +28,7 @@ function App() {
 
   const _getBlockWithTransaction = async (_blockNumber) => {
     console.log('getting block with transaction');
-    if (_blockNumber > blockNumber || _blockNumber == undefined ) {
+    if (_blockNumber > blockNumber || _blockNumber === undefined ) {
       alert("You can't get transactions for this");
     } else {
       try {
