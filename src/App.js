@@ -186,7 +186,7 @@ function App() {
 
 
 
-
+//const main = async () => {
   //Assign the hash from the block number property above , then assign to a variable
   //let txHash = "0x92fc42b9642023f2ee2e88094df80ce87e15d91afa812fef383e6e5cd96e2ed3";
   //Response would return the block for provided hash
@@ -196,7 +196,7 @@ function App() {
   //return <div className="App">Block: {Block}</div>;
   //};
   //main();
-;
+//};
 export default App;
 
 // //header ScopeSevenScan Tab  Home - Tokens - FAQ -
