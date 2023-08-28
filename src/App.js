@@ -196,7 +196,7 @@ function App() {
   //return <div className="App">Block: {Block}</div>;
   //};
   //main();
-};
+;
 export default App;
 
 // //header ScopeSevenScan Tab  Home - Tokens - FAQ -
