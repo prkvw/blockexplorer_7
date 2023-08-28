@@ -184,23 +184,9 @@ function App() {
   );
 }
 
-const gain = async () => {
-  // This response fetches the balance of the given address in the paramter as of the provided block.
-  let response = await alchemy.core.getBalance("fiyin.eth", "latest");
 
-  //Logging the response to the console
-  console.log(response);
-  //return <div className="App">Block: {Block}</div>;
-};
 
-const pain = async () => {
-  //Call the method
-  let response = await alchemy.core.getGasPrice();
-  //Logging the response to the console
-  console.log(response);
-};
 
-const main = async () => {
   //Assign the hash from the block number property above , then assign to a variable
   //let txHash = "0x92fc42b9642023f2ee2e88094df80ce87e15d91afa812fef383e6e5cd96e2ed3";
   //Response would return the block for provided hash
